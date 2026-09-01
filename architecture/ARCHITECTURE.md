@@ -260,6 +260,66 @@ Every project has tags such as:
 
 These rules are encoded in `@nx/enforce-module-boundaries` with both scope and type constraints. The type hierarchy prevents models and utilities from gaining infrastructure dependencies, while the scope hierarchy prevents browser/server coupling. Side-effect ports are defined in model libraries where they are pure TypeScript contracts; their concrete implementations live in data-access libraries and are supplied by app composition roots.
 
+The root ESLint configuration must make the taxonomy executable. Every Nx project declares one `scope:*` tag and one `type:*` tag in `project.json`. Because Nx applies every matching dependency constraint, the scope and type rules intersect:
+
+```js
+{
+  '@nx/enforce-module-boundaries': [
+    'error',
+    {
+      allow: [],
+      enforceBuildableLibDependency: true,
+      depConstraints: [
+        {
+          sourceTag: 'scope:frontend',
+          onlyDependOnLibsWithTags: ['scope:frontend', 'scope:shared'],
+        },
+        {
+          sourceTag: 'scope:backend',
+          onlyDependOnLibsWithTags: ['scope:backend', 'scope:shared'],
+        },
+        {
+          sourceTag: 'scope:shared',
+          onlyDependOnLibsWithTags: ['scope:shared'],
+        },
+        {
+          sourceTag: 'type:app',
+          onlyDependOnLibsWithTags: [
+            'type:feature',
+            'type:data-access',
+            'type:util',
+            'type:model',
+          ],
+        },
+        {
+          sourceTag: 'type:feature',
+          onlyDependOnLibsWithTags: [
+            'type:feature',
+            'type:data-access',
+            'type:util',
+            'type:model',
+          ],
+        },
+        {
+          sourceTag: 'type:data-access',
+          onlyDependOnLibsWithTags: ['type:util', 'type:model'],
+        },
+        {
+          sourceTag: 'type:util',
+          onlyDependOnLibsWithTags: ['type:util', 'type:model'],
+        },
+        {
+          sourceTag: 'type:model',
+          onlyDependOnLibsWithTags: ['type:model'],
+        },
+      ],
+    },
+  ],
+}
+```
+
+CI runs ESLint for all affected projects and a full-workspace boundary lint before production promotion. Generators assign both required tags from the selected scope/type path and fail if a project is created outside the taxonomy; an architecture test also reports projects with missing, duplicate, or unknown taxonomy tags.
+
 Use standalone Angular components, signals for local/view state, RxJS at asynchronous boundaries, strict TypeScript, immutable values, and functions over stateful classes except where Angular/Hapi/Pixi lifecycles require framework objects.
 
 ## 8. Angular frontend and PixiJS
