@@ -162,89 +162,103 @@ flowchart LR
   Owner --> Checkpoint --> PG
 ```
 
-Adapters parse transport data and call use-case functions. Use cases depend on ports. AWS SDK, Hapi request/reply, SQL clients, Redis clients, clocks, randomness, mail, and Stripe are side-effect adapters passed as dependencies. Domain libraries accept values and return values/events; they never import Hapi, Angular, AWS, Stripe, Redis, or database clients.
+Transport-facing features parse input and call use-case functions. Side effects implemented with the AWS SDK, Hapi request/reply, SQL clients, Redis clients, clocks, randomness, mail, and Stripe live behind `data-access` libraries and are passed into features as dependencies. Models and pure utilities accept values and return values/events; they never import Hapi, Angular, AWS, Stripe, Redis, or database clients.
 
 ## 7. Nx workspace layout and boundaries
 
 ```text
 /
 ├── apps/
-│   ├── web/                         # Angular 19 SPA
-│   ├── api/                         # HapiJS modular-monolith composition root
-│   ├── realtime/                    # HapiJS + WebSocket composition root
-│   ├── worker/                      # HapiJS operational server + consumers
-│   └── infrastructure/              # AWS CDK TypeScript app
+│   ├── web/                               # thin Angular composition/bootstrap wrapper
+│   ├── api/                               # thin HapiJS API composition wrapper
+│   ├── realtime/                          # thin HapiJS + WebSocket composition wrapper
+│   ├── worker/                            # thin worker composition wrapper
+│   └── infrastructure/                    # thin AWS CDK composition wrapper
 ├── libs/
-│   ├── domain/
-│   │   ├── shared/                  # IDs, Result, clocks as interfaces
-│   │   ├── identity/                # host/session/magic-link rules
-│   │   ├── events/                  # event lifecycle and policy
-│   │   ├── admission/               # participant and credential rules
-│   │   ├── queue/                   # pure queue/rotation state machine
-│   │   ├── tennis/                  # fixed-step pure simulation
-│   │   └── billing/                 # purchase/payment transition rules
-│   ├── application/
-│   │   ├── identity/
-│   │   ├── events/
-│   │   ├── admission/
-│   │   ├── billing/
-│   │   └── live-party/              # use cases and side-effect ports
-│   ├── contracts/
-│   │   ├── http/                    # TypeBox schemas and inferred types
-│   │   ├── realtime/                # protocol envelope/message schemas
-│   │   └── events/                  # outbox/SQS event schemas
-│   ├── adapters/
-│   │   ├── postgres/
-│   │   ├── redis/
-│   │   ├── stripe/
-│   │   ├── ses/
-│   │   ├── sqs/
-│   │   └── observability/
-│   ├── server/
-│   │   ├── hapi-core/               # plugins, auth, errors, health, shutdown
-│   │   ├── api-modules/             # thin Hapi route plugins
-│   │   ├── realtime-transport/      # upgrade/auth/framing only
-│   │   └── worker-runtime/
-│   ├── web/
-│   │   ├── shell/
-│   │   ├── host/
-│   │   ├── join/
-│   │   ├── party/
-│   │   ├── game-canvas/
+│   ├── frontend/
+│   │   ├── feature/
+│   │   │   ├── application-shell/
+│   │   │   ├── host-dashboard/
+│   │   │   ├── event-setup/
+│   │   │   ├── party-lobby/
+│   │   │   └── tennis-game/
 │   │   ├── data-access/
-│   │   └── ui/
-│   ├── testing/
-│   │   ├── fixtures/
-│   │   ├── protocol-harness/
-│   │   └── simulation-harness/
-│   └── infrastructure/
-│       ├── constructs/
-│       └── config/
+│   │   │   ├── http-client/
+│   │   │   └── realtime-client/
+│   │   ├── util/
+│   │   │   ├── pixi-renderer/
+│   │   │   └── accessibility/
+│   │   └── models/
+│   │       └── view-state/
+│   ├── backend/
+│   │   ├── feature/
+│   │   │   ├── auth-manager/
+│   │   │   ├── event-manager/
+│   │   │   ├── admission-manager/
+│   │   │   ├── payment-manager/           # purchase and refund orchestration
+│   │   │   ├── live-party-manager/
+│   │   │   ├── http-api/
+│   │   │   ├── realtime-server/
+│   │   │   ├── worker-runtime/
+│   │   │   └── cloud-infrastructure/
+│   │   ├── data-access/
+│   │   │   ├── postgres/
+│   │   │   ├── redis/
+│   │   │   ├── stripe-connector/          # Stripe SDK boundary only
+│   │   │   ├── ses-connector/
+│   │   │   ├── sqs-connector/
+│   │   │   └── websocket-transport/
+│   │   ├── util/
+│   │   │   ├── hapi-core/
+│   │   │   ├── tennis-simulation/
+│   │   │   ├── idempotency/
+│   │   │   └── observability/
+│   │   └── models/
+│   │       ├── identity/
+│   │       ├── events/
+│   │       ├── admission/
+│   │       ├── payments/
+│   │       ├── party/
+│   │       └── tennis/
+│   └── shared/
+│       ├── models/
+│       │   ├── http-contracts/             # Zod schemas and inferred types
+│       │   ├── realtime-contracts/         # Zod protocol schemas
+│       │   ├── integration-events/         # Zod outbox/SQS schemas
+│       │   └── identifiers/
+│       └── util/
+│           ├── result/
+│           ├── time/
+│           └── testing/
 ├── tools/
 ├── migrations/
 └── architecture/
 ```
 
+Applications contain configuration, framework bootstrap, and dependency composition only. Business behavior belongs in libraries. A feature such as `backend/feature/payment-manager` orchestrates policy and use cases; a connector such as `backend/data-access/stripe-connector` isolates external I/O and does not contain payment policy.
+
 ### 7.1 Enforceable Nx tags
 
 Every project has tags such as:
 
-- `type:app`, `type:domain`, `type:application`, `type:contract`, `type:adapter`, `type:transport`, `type:feature`, `type:ui`, `type:infra`, `type:test`;
-- `scope:identity`, `scope:event`, `scope:billing`, `scope:party`, `scope:tennis`, `scope:shared`;
-- `platform:browser`, `platform:node`, `platform:neutral`.
+- `scope:frontend`, `scope:backend`, or `scope:shared`;
+- `type:feature`, `type:data-access`, `type:util`, or `type:model`;
+- `type:app` only for projects under `apps/`.
 
 `@nx/enforce-module-boundaries` rules:
 
-1. `type:domain` depends only on `type:domain` and `platform:neutral`.
-2. `type:application` depends only on domain, contracts, and application libraries.
-3. `type:adapter` may depend on application ports, domain, and contracts; adapters never depend on each other.
-4. `type:transport` depends on application, contracts, and shared server code, never directly on another transport.
-5. `platform:browser` cannot depend on `platform:node`.
-6. Web feature libraries cannot import adapters or server libraries.
-7. Only app composition roots may wire concrete adapters.
-8. Cross-scope domain dependency is denied except through `domain/shared` or an explicitly reviewed contract.
-9. Ban deep imports through package `exports` and ESLint.
-10. CODEOWNERS requires architecture review for contracts, domain boundaries, migrations, and CDK.
+1. `scope:frontend` may depend only on `scope:frontend` and `scope:shared`.
+2. `scope:backend` may depend only on `scope:backend` and `scope:shared`.
+3. `scope:shared` may depend only on `scope:shared`; shared code never reaches into frontend or backend.
+4. `type:feature` may depend on feature, data-access, util, and model libraries allowed by its scope.
+5. `type:data-access` may depend only on util and model libraries allowed by its scope.
+6. `type:util` may depend only on util and model libraries allowed by its scope.
+7. `type:model` may depend only on model libraries allowed by its scope.
+8. `type:app` may compose libraries for its runtime but contains no business rules or reusable implementation.
+9. Libraries import only public entry points; deep imports are prohibited through package exports and ESLint.
+10. Circular project dependencies are prohibited. CODEOWNERS requires architecture review for shared contracts, boundary rules, migrations, and CDK.
+
+These rules are encoded in `@nx/enforce-module-boundaries` with both scope and type constraints. The type hierarchy prevents models and utilities from gaining infrastructure dependencies, while the scope hierarchy prevents browser/server coupling. Side-effect ports are defined in model libraries where they are pure TypeScript contracts; their concrete implementations live in data-access libraries and are supplied by app composition roots.
 
 Use standalone Angular components, signals for local/view state, RxJS at asynchronous boundaries, strict TypeScript, immutable values, and functions over stateful classes except where Angular/Hapi/Pixi lifecycles require framework objects.
 
@@ -369,7 +383,9 @@ The server derives price, currency, cap, and duration from its versioned package
 
 ### 9.2 Validation and errors
 
-Use TypeBox as the single source for JSON Schema and inferred TypeScript types. Compile schemas with Ajv in contracts libraries; register them in Hapi route `options.validate` and validate outbound responses in non-production tests/staging. Realtime and SQS consumers use the same compiled schemas at ingress.
+Use Zod 4 schemas in `libs/shared/models/*-contracts` as the source of truth for runtime validation and inferred TypeScript types. A small first-party Hapi adapter calls `safeParseAsync()` for route payloads, params, query strings, and headers, returns the parsed value so coercions are explicit, and maps Zod issues into the standard problem response. Do not couple route definitions to a third-party Hapi/Zod plugin.
+
+The same Zod schemas validate realtime frames and SQS events at ingress. Responses are parsed in contract tests and in staging/non-production runtime checks. Generate JSON Schema and OpenAPI documents from the Zod schemas, while testing generated documents as artifacts rather than treating them as a second schema source.
 
 Rules:
 
@@ -428,7 +444,7 @@ Authorization is checked per message, not only at connection. `eventId` must equ
 
 ### 11.1 Pure deterministic simulation
 
-`libs/domain/tennis` exports a pure reducer:
+`libs/backend/util/tennis-simulation` exports a pure reducer over types from `libs/backend/models/tennis`:
 
 ```ts
 step(state: TennisState, inputs: Readonly<PlayerInputs>, dtTicks: 1): StepResult
