@@ -1,0 +1,36 @@
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="border-b border-slate-200 bg-white">
+  <nav
+    class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3"
+    aria-label="Primary navigation"
+  >
+    <a class="text-lg font-semibold text-slate-900" routerLink="/">
+      Symphony Apps
+    </a>
+    <a mat-button routerLink="/">Home</a>
+  </nav>
+</header>
+
+<main id="main-content" class="mx-auto max-w-6xl px-4 py-12" tabindex="-1">
+  <section aria-labelledby="foundation-heading">
+    <p class="mb-2 text-sm font-medium uppercase tracking-wide text-blue-700">
+      Workspace foundation
+    </p>
+    <h1 id="foundation-heading" class="text-4xl font-semibold text-slate-950">
+      Bring people together through play.
+    </h1>
+    <p class="mt-4 max-w-2xl text-lg text-slate-700">
+      The Symphony Apps platform is being prepared for its first playable
+      experience.
+    </p>
+  </section>
+
+  <router-outlet />
+</main>
+
+<footer class="border-t border-slate-200 px-4 py-6 text-sm text-slate-600">
+  <div class="mx-auto max-w-6xl">
+    <p>&copy; 2026 Symphony Apps</p>
+  </div>
+</footer>
