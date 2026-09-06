@@ -141,3 +141,11 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+.nx/installation
+.nx/cache
+.nx/workspace-data
+.nx/self-healing
+.angular
+
+__screenshots__/
