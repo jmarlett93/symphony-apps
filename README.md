@@ -25,8 +25,13 @@ pnpm format:check
 pnpm lint
 pnpm test
 pnpm build
+pnpm e2e:smoke
 ```
 
 Projects use one `scope:*` tag and one `type:*` tag. The dependency rules and
 planned workspace structure are documented in
 [`architecture/ARCHITECTURE.md`](architecture/ARCHITECTURE.md#7-nx-workspace-layout-and-boundaries).
+
+Pull requests run these checks through GitHub Actions. Nx limits lint,
+type-check, unit-test, and build work to affected projects, while taxonomy,
+formatting, and the Chromium shell smoke test always run.
