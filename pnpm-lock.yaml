@@ -220,6 +220,9 @@ importers:
       '@swc/helpers':
         specifier: ~0.5.18
         version: 0.5.23
+      '@types/node':
+        specifier: ^26.4.1
+        version: 26.4.1
       '@typescript-eslint/utils':
         specifier: ^8.40.0
         version: 8.69.0(eslint@9.39.5(jiti@1.21.7)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3)
