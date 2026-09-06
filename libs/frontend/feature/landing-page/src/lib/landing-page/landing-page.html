@@ -1,0 +1,206 @@
+<article>
+  <section class="hero overflow-hidden" aria-labelledby="hero-heading">
+    <div
+      class="hero-grid mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 lg:grid-cols-2 lg:py-24"
+    >
+      <div>
+        <p class="eyebrow">Remote team play, reimagined</p>
+        <h1
+          id="hero-heading"
+          class="mt-4 max-w-3xl text-5xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-6xl"
+        >
+          Turn your next team call into
+          <span class="text-blue-700">playtime.</span>
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-700">
+          Symphony Apps makes it simple to host a lightweight virtual game
+          hangout. Your guests open a link, choose a name, and jump into the
+          fun—no downloads or accounts required.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a mat-flat-button href="#how-it-works">See how it works</a>
+          <a mat-button href="#rally-partners">Meet the first game</a>
+        </div>
+
+        <ul
+          class="mt-10 grid gap-3 text-sm font-medium text-slate-700 sm:grid-cols-3"
+          aria-label="Platform highlights"
+        >
+          <li class="highlight">No downloads</li>
+          <li class="highlight">Guests join free</li>
+          <li class="highlight">Made for browsers</li>
+        </ul>
+      </div>
+
+      <div class="party-card" aria-label="Example party in progress">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <p class="text-sm font-medium text-blue-700">Friday team rally</p>
+            <h2 class="mt-1 text-2xl font-semibold text-slate-950">
+              Match in progress
+            </h2>
+          </div>
+          <span class="live-badge">
+            <span class="live-dot" aria-hidden="true"></span>
+            Live
+          </span>
+        </div>
+
+        <div class="court mt-8" aria-hidden="true">
+          <span class="court-line court-line--horizontal"></span>
+          <span class="court-line court-line--vertical"></span>
+          <span class="paddle paddle--left"></span>
+          <span class="paddle paddle--right"></span>
+          <span class="ball"></span>
+        </div>
+
+        <div class="mt-6 grid grid-cols-[1fr_auto_1fr] items-center gap-4">
+          <p class="font-semibold text-slate-900">Alex</p>
+          <p class="score" aria-label="Score: Alex 4, Morgan 3">
+            4&nbsp;—&nbsp;3
+          </p>
+          <p class="text-right font-semibold text-slate-900">Morgan</p>
+        </div>
+
+        <div class="mt-6 border-t border-slate-200 pt-5">
+          <p
+            class="text-xs font-semibold uppercase tracking-wider text-slate-500"
+          >
+            Up next
+          </p>
+          <div class="mt-3 flex items-center gap-2">
+            <span class="avatar" aria-hidden="true">S</span>
+            <span class="font-medium text-slate-800">Sam</span>
+            <span class="text-slate-400" aria-hidden="true">·</span>
+            <span class="avatar avatar--coral" aria-hidden="true">J</span>
+            <span class="font-medium text-slate-800">Jordan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="border-y border-slate-200 bg-white"
+    aria-labelledby="benefits-heading"
+  >
+    <div class="mx-auto max-w-6xl px-4 py-20">
+      <div class="max-w-2xl">
+        <p class="eyebrow">Less setup, more connection</p>
+        <h2
+          id="benefits-heading"
+          class="mt-3 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl"
+        >
+          A party that starts before the energy fades.
+        </h2>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        @for (benefit of benefits; track benefit.eyebrow) {
+        <section
+          class="benefit-card"
+          [attr.aria-labelledby]="'benefit-' + $index"
+        >
+          <p class="feature-index">{{ benefit.eyebrow }}</p>
+          <h3
+            [id]="'benefit-' + $index"
+            class="mt-6 text-xl font-semibold text-slate-950"
+          >
+            {{ benefit.title }}
+          </h3>
+          <p class="mt-3 leading-7 text-slate-600">{{ benefit.description }}</p>
+        </section>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section
+    id="how-it-works"
+    class="scroll-mt-20 bg-slate-950 text-white"
+    aria-labelledby="steps-heading"
+  >
+    <div class="mx-auto max-w-6xl px-4 py-20">
+      <p class="eyebrow eyebrow--dark">How it works</p>
+      <h2
+        id="steps-heading"
+        class="mt-3 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl"
+      >
+        From calendar invite to friendly rivalry.
+      </h2>
+
+      <ol class="mt-12 grid gap-8 md:grid-cols-3">
+        @for (step of steps; track step.eyebrow) {
+        <li class="step">
+          <p
+            class="text-sm font-semibold uppercase tracking-wider text-cyan-300"
+          >
+            {{ step.eyebrow }}
+          </p>
+          <h3 class="mt-3 text-xl font-semibold">{{ step.title }}</h3>
+          <p class="mt-3 leading-7 text-slate-300">{{ step.description }}</p>
+        </li>
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section
+    id="rally-partners"
+    class="scroll-mt-20 bg-amber-50"
+    aria-labelledby="game-heading"
+  >
+    <div class="mx-auto grid max-w-6xl gap-10 px-4 py-20 lg:grid-cols-2">
+      <div>
+        <p class="eyebrow text-amber-800">First on court</p>
+        <h2
+          id="game-heading"
+          class="mt-3 text-4xl font-semibold tracking-tight text-slate-950"
+        >
+          Meet Rally Partners.
+        </h2>
+        <p class="mt-5 text-lg leading-8 text-slate-700">
+          Fast, playful arcade tennis built for a group. Two players take the
+          court while everyone else follows the score, reacts to improbable
+          saves, and sees exactly when they are up next.
+        </p>
+      </div>
+
+      <dl class="game-facts">
+        <div>
+          <dt>Built for groups</dt>
+          <dd>Quick matches and fair rotation keep the room moving.</dd>
+        </div>
+        <div>
+          <dt>Easy to follow</dt>
+          <dd>Visible scores, queue order, and match state for every guest.</dd>
+        </div>
+        <div>
+          <dt>Social by design</dt>
+          <dd>Pairs with the meeting call your team already uses.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="bg-white" aria-labelledby="inclusive-heading">
+    <div class="mx-auto max-w-6xl px-4 py-20">
+      <div class="inclusive-panel">
+        <div>
+          <p class="eyebrow">Everyone belongs in the room</p>
+          <h2
+            id="inclusive-heading"
+            class="mt-3 text-3xl font-semibold tracking-tight text-slate-950"
+          >
+            Accessibility is part of the game plan.
+          </h2>
+        </div>
+        <p class="max-w-2xl text-lg leading-8 text-slate-700">
+          Core social flows are designed for keyboard and screen-reader use,
+          with essential game status available outside the canvas. Mobile guests
+          can always join, watch, react, and reconnect.
+        </p>
+      </div>
+    </div>
+  </section>
+</article>

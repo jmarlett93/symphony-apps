@@ -16,7 +16,8 @@
     "paths": {
       "application-shell": [
         "./libs/frontend/feature/application-shell/src/index.ts"
-      ]
+      ],
+      "landing-page": ["./libs/frontend/feature/landing-page/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

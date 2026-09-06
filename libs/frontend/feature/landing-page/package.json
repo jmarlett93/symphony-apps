@@ -1,0 +1,9 @@
+{
+  "name": "landing-page",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/core": "^21.2.0",
+    "@angular/material": "^21.2.0"
+  },
+  "sideEffects": false
+}
