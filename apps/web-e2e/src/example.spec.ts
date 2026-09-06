@@ -14,6 +14,8 @@ test('presents the marketing page in an accessible shell', async ({ page }) => {
     page.getByRole('navigation', { name: 'Primary navigation' }),
   ).toBeVisible();
   await expect(page.locator('main#main-content')).toBeVisible();
+  await expect(page.locator('header')).toHaveCSS('position', 'sticky');
+  await expect(page.locator('.btr-hero-grid')).toHaveCSS('display', 'grid');
 
   await page.getByRole('link', { name: 'See how it works' }).click();
   await expect(page.locator('#how-it-works')).toBeInViewport();
