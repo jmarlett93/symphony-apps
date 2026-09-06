@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test('presents the marketing page in an accessible shell', async ({ page }) => {
   await page.goto('/');
 
-  await expect(page).toHaveTitle('Symphony Apps — Remote team games');
+  await expect(page).toHaveTitle('BreakTimerr — Remote team games');
   await expect(
     page.getByRole('heading', {
       level: 1,

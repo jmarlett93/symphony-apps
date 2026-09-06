@@ -1,4 +1,4 @@
-# Symphony Apps Architecture
+# BreakTimerr Architecture
 
 **Status:** implementation baseline  
 **Product contract:** `product/PRODUCT_REQUIREMENTS.md`  
@@ -30,7 +30,7 @@ This is intentionally not a microservice estate. Transactional HTTP concerns sta
 6. Ship quickly with few deployables while preserving clear extraction seams.
 7. Meet WCAG 2.2 AA outside the canvas and expose essential canvas state in accessible DOM.
 8. Scale parties horizontally without Kubernetes or per-party infrastructure.
-9. Keep card data out of Symphony systems by using Stripe Checkout.
+9. Keep card data out of BreakTimerr systems by using Stripe Checkout.
 10. Make local tests fast and deterministic.
 
 ### 2.2 Assumptions
@@ -74,10 +74,10 @@ No narrow exception to the preferred product stack is required. PostgreSQL, Redi
 
 ```mermaid
 C4Context
-  title Symphony Apps system context
+  title BreakTimerr system context
   Person(host, "Host", "Signs in, purchases, invites, moderates")
   Person(guest, "Guest", "Joins an event without an account")
-  System(sym, "Symphony Apps", "Web-native coworker game parties")
+  System(sym, "BreakTimerr", "Web-native coworker game parties")
   System_Ext(stripe, "Stripe", "Checkout, payment, refunds, receipts")
   System_Ext(ses, "Amazon SES", "Transactional host email")
   System_Ext(obs, "AWS observability", "Metrics, logs, traces, alarms")
@@ -96,7 +96,7 @@ C4Context
 C4Container
   title Runtime containers
   Person(user, "Browser user")
-  System_Boundary(sys, "Symphony Apps") {
+  System_Boundary(sys, "BreakTimerr") {
     Container(web, "Angular web", "Angular 21, Material, Tailwind, PixiJS", "Host, guest, lobby, accessible game shell")
     Container(api, "HTTP API", "Node.js + HapiJS", "Modular monolith for durable workflows")
     Container(rt, "Realtime service", "Node.js + HapiJS + WebSocket adapter", "Presence, protocol, party ownership, simulation")

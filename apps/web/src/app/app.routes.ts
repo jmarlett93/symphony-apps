@@ -6,7 +6,7 @@ export const appRoutes: Route[] = [
     pathMatch: 'full',
     loadComponent: () =>
       import('landing-page').then(({ LandingPage }) => LandingPage),
-    title: 'Symphony Apps — Remote team games',
+    title: 'BreakTimerr — Remote team games',
   },
   {
     path: '**',
