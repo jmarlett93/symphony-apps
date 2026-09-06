@@ -8,7 +8,7 @@
 
 Build one Nx monorepo containing:
 
-- an Angular 19 web application, statically hosted from S3 through CloudFront;
+- an Angular 21 web application, statically hosted from S3 through CloudFront;
 - a HapiJS modular-monolith API for host identity, events, admission, payments, summaries, and administration;
 - a separate HapiJS realtime service for WebSocket connections and authoritative tennis simulation;
 - TypeScript AWS CDK applications for all cloud infrastructure;
@@ -97,7 +97,7 @@ C4Container
   title Runtime containers
   Person(user, "Browser user")
   System_Boundary(sys, "Symphony Apps") {
-    Container(web, "Angular web", "Angular 19, Material, Tailwind, PixiJS", "Host, guest, lobby, accessible game shell")
+    Container(web, "Angular web", "Angular 21, Material, Tailwind, PixiJS", "Host, guest, lobby, accessible game shell")
     Container(api, "HTTP API", "Node.js + HapiJS", "Modular monolith for durable workflows")
     Container(rt, "Realtime service", "Node.js + HapiJS + WebSocket adapter", "Presence, protocol, party ownership, simulation")
     Container(worker, "Worker", "Node.js + HapiJS", "Hapi health/admin surface plus SQS consumers and schedules")
