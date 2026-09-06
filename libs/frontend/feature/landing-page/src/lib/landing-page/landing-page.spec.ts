@@ -26,7 +26,7 @@ describe('LandingPage', () => {
       'Turn your next team call into',
     );
     expect(element.textContent).toContain('no downloads or accounts required');
-    expect(element.querySelectorAll('.benefit-card')).toHaveLength(3);
+    expect(element.querySelectorAll('.btr-benefit-card')).toHaveLength(3);
   });
 
   it('uses labelled sections and semantic steps', () => {

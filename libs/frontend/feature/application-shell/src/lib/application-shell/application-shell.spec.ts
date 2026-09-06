@@ -28,7 +28,7 @@ describe('ApplicationShell', () => {
       'Primary navigation',
     );
     expect(element.querySelector('main')?.id).toBe('main-content');
-    expect(element.querySelector('.skip-link')?.getAttribute('href')).toBe(
+    expect(element.querySelector('.btr-skip-link')?.getAttribute('href')).toBe(
       '#main-content',
     );
   });

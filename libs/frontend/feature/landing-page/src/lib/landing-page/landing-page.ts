@@ -8,7 +8,7 @@ type MarketingItem = Readonly<{
 }>;
 
 @Component({
-  selector: 'sym-landing-page',
+  selector: 'btr-landing-page',
   imports: [MatButtonModule],
   templateUrl: './landing-page.html',
   styleUrl: './landing-page.scss',

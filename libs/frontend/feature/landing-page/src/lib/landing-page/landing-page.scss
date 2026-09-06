@@ -2,7 +2,7 @@
   display: block;
 }
 
-.hero {
+.btr-hero {
   background:
     radial-gradient(
       circle at 85% 15%,
@@ -12,11 +12,11 @@
     linear-gradient(145deg, #f8fafc 10%, #eff6ff 55%, #fff7ed);
 }
 
-.hero-grid {
+.btr-hero-grid {
   min-height: min(48rem, calc(100vh - 4rem));
 }
 
-.eyebrow {
+.btr-eyebrow {
   color: #1d4ed8;
   font-size: 0.75rem;
   font-weight: 700;
@@ -24,17 +24,17 @@
   text-transform: uppercase;
 }
 
-.eyebrow--dark {
+.btr-eyebrow--dark {
   color: #67e8f9;
 }
 
-.highlight {
+.btr-highlight {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.highlight::before {
+.btr-highlight::before {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 9999px;
@@ -42,7 +42,7 @@
   content: '';
 }
 
-.party-card {
+.btr-party-card {
   border: 1px solid rgb(148 163 184 / 35%);
   border-radius: 1.5rem;
   background: rgb(255 255 255 / 92%);
@@ -50,7 +50,7 @@
   padding: clamp(1.25rem, 4vw, 2rem);
 }
 
-.live-badge {
+.btr-live-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
@@ -62,14 +62,14 @@
   padding: 0.35rem 0.65rem;
 }
 
-.live-dot {
+.btr-live-dot {
   width: 0.45rem;
   height: 0.45rem;
   border-radius: 9999px;
   background: #16a34a;
 }
 
-.court {
+.btr-court {
   position: relative;
   aspect-ratio: 16 / 10;
   overflow: hidden;
@@ -86,32 +86,32 @@
   box-shadow: inset 0 0 0 1px rgb(255 255 255 / 20%);
 }
 
-.court-line,
-.paddle,
-.ball {
+.btr-court-line,
+.btr-paddle,
+.btr-ball {
   position: absolute;
   display: block;
 }
 
-.court-line {
+.btr-court-line {
   background: rgb(219 234 254 / 85%);
 }
 
-.court-line--horizontal {
+.btr-court-line--horizontal {
   top: 50%;
   right: 0;
   left: 0;
   height: 0.125rem;
 }
 
-.court-line--vertical {
+.btr-court-line--vertical {
   top: 0;
   bottom: 0;
   left: 50%;
   width: 0.125rem;
 }
 
-.paddle {
+.btr-paddle {
   top: 38%;
   width: 0.55rem;
   height: 24%;
@@ -120,15 +120,15 @@
   box-shadow: 0 0.25rem 0.75rem rgb(15 23 42 / 25%);
 }
 
-.paddle--left {
+.btr-paddle--left {
   left: 7%;
 }
 
-.paddle--right {
+.btr-paddle--right {
   right: 7%;
 }
 
-.ball {
+.btr-ball {
   top: 34%;
   left: 58%;
   width: 0.8rem;
@@ -138,14 +138,14 @@
   box-shadow: 0 0.2rem 0.5rem rgb(15 23 42 / 30%);
 }
 
-.score {
+.btr-score {
   color: #0f172a;
   font-size: 1.5rem;
   font-variant-numeric: tabular-nums;
   font-weight: 700;
 }
 
-.avatar {
+.btr-avatar {
   display: inline-grid;
   width: 2rem;
   height: 2rem;
@@ -157,18 +157,18 @@
   font-weight: 700;
 }
 
-.avatar--coral {
+.btr-avatar--coral {
   background: #ffedd5;
   color: #9a3412;
 }
 
-.benefit-card {
+.btr-benefit-card {
   border: 1px solid #e2e8f0;
   border-radius: 1rem;
   padding: 1.5rem;
 }
 
-.feature-index {
+.btr-feature-index {
   display: grid;
   width: 2.5rem;
   height: 2.5rem;
@@ -180,35 +180,35 @@
   font-weight: 800;
 }
 
-.step {
+.btr-step {
   border-top: 1px solid #334155;
   padding-top: 1.5rem;
 }
 
-.game-facts {
+.btr-game-facts {
   display: grid;
   gap: 1rem;
 }
 
-.game-facts > div {
+.btr-game-facts > div {
   border-left: 0.25rem solid #f59e0b;
   border-radius: 0 0.75rem 0.75rem 0;
   background: rgb(255 255 255 / 75%);
   padding: 1.25rem;
 }
 
-.game-facts dt {
+.btr-game-facts dt {
   color: #0f172a;
   font-weight: 700;
 }
 
-.game-facts dd {
+.btr-game-facts dd {
   margin: 0.35rem 0 0;
   color: #475569;
   line-height: 1.6;
 }
 
-.inclusive-panel {
+.btr-inclusive-panel {
   display: grid;
   align-items: center;
   gap: 2rem;
@@ -218,19 +218,19 @@
 }
 
 @media (min-width: 64rem) {
-  .inclusive-panel {
+  .btr-inclusive-panel {
     grid-template-columns: 0.8fr 1.2fr;
   }
 }
 
 @media (forced-colors: active) {
-  .party-card,
-  .benefit-card,
-  .game-facts > div {
+  .btr-party-card,
+  .btr-benefit-card,
+  .btr-game-facts > div {
     border: 1px solid CanvasText;
   }
 
-  .court {
+  .btr-court {
     border: 0.25rem solid CanvasText;
   }
 }

@@ -2,7 +2,7 @@
   "name": "landing-page",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/frontend/feature/landing-page/src",
-  "prefix": "sym",
+  "prefix": "btr",
   "projectType": "library",
   "tags": ["scope:frontend", "type:feature"],
   "targets": {

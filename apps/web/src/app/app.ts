@@ -3,7 +3,7 @@ import { ApplicationShell } from 'application-shell';
 
 @Component({
   imports: [ApplicationShell],
-  selector: 'sym-root',
+  selector: 'btr-root',
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
