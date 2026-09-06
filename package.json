@@ -6,6 +6,7 @@
   "scripts": {
     "boundaries": "node tools/validate-project-tags.mjs",
     "build": "nx run-many -t build",
+    "e2e:smoke": "playwright test --config=apps/web-e2e/playwright.config.ts --project=chromium",
     "format": "nx format:write",
     "format:check": "nx format:check",
     "lint": "nx run-many -t lint",
