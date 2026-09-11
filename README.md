@@ -1,6 +1,6 @@
-# symphony-apps
+# BreakTimerr
 
-Nx monorepo for Symphony businesses.
+Nx monorepo for BreakTimerr.
 
 ## Prerequisites
 

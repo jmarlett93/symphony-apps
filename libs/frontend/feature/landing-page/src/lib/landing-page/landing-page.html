@@ -1,0 +1,226 @@
+<article>
+  <section class="btr-hero btr-overflow-hidden" aria-labelledby="hero-heading">
+    <div
+      class="btr-hero-grid btr-mx-auto btr-grid btr-max-w-6xl btr-items-center btr-gap-12 btr-px-4 btr-py-16 lg:btr-grid-cols-2 lg:btr-py-24"
+    >
+      <div>
+        <p class="btr-eyebrow">Remote team play, reimagined</p>
+        <h1
+          id="hero-heading"
+          class="btr-mt-4 btr-max-w-3xl btr-text-5xl btr-font-semibold btr-leading-tight btr-tracking-tight btr-text-slate-950 sm:btr-text-6xl"
+        >
+          Turn your next team call into
+          <span class="btr-text-blue-700">playtime.</span>
+        </h1>
+        <p
+          class="btr-mt-6 btr-max-w-2xl btr-text-lg btr-leading-8 btr-text-slate-700"
+        >
+          BreakTimerr makes it simple to host a lightweight virtual game
+          hangout. Your guests open a link, choose a name, and jump into the
+          fun—no downloads or accounts required.
+        </p>
+        <div class="btr-mt-8 btr-flex btr-flex-wrap btr-gap-3">
+          <a mat-flat-button href="#how-it-works">See how it works</a>
+          <a mat-button href="#rally-partners">Meet the first game</a>
+        </div>
+
+        <ul
+          class="btr-mt-10 btr-grid btr-gap-3 btr-text-sm btr-font-medium btr-text-slate-700 sm:btr-grid-cols-3"
+          aria-label="Platform highlights"
+        >
+          <li class="btr-highlight">No downloads</li>
+          <li class="btr-highlight">Guests join free</li>
+          <li class="btr-highlight">Made for browsers</li>
+        </ul>
+      </div>
+
+      <div class="btr-party-card" aria-label="Example party in progress">
+        <div class="btr-flex btr-items-start btr-justify-between btr-gap-4">
+          <div>
+            <p class="btr-text-sm btr-font-medium btr-text-blue-700">
+              Friday team rally
+            </p>
+            <h2
+              class="btr-mt-1 btr-text-2xl btr-font-semibold btr-text-slate-950"
+            >
+              Match in progress
+            </h2>
+          </div>
+          <span class="btr-live-badge">
+            <span class="btr-live-dot" aria-hidden="true"></span>
+            Live
+          </span>
+        </div>
+
+        <div class="btr-court btr-mt-8" aria-hidden="true">
+          <span class="btr-court-line btr-court-line--horizontal"></span>
+          <span class="btr-court-line btr-court-line--vertical"></span>
+          <span class="btr-paddle btr-paddle--left"></span>
+          <span class="btr-paddle btr-paddle--right"></span>
+          <span class="btr-ball"></span>
+        </div>
+
+        <div
+          class="btr-mt-6 btr-grid btr-grid-cols-[1fr_auto_1fr] btr-items-center btr-gap-4"
+        >
+          <p class="btr-font-semibold btr-text-slate-900">Alex</p>
+          <p class="btr-score" aria-label="Score: Alex 4, Morgan 3">
+            4&nbsp;—&nbsp;3
+          </p>
+          <p class="btr-text-right btr-font-semibold btr-text-slate-900">
+            Morgan
+          </p>
+        </div>
+
+        <div class="btr-mt-6 btr-border-t btr-border-slate-200 btr-pt-5">
+          <p
+            class="btr-text-xs btr-font-semibold btr-uppercase btr-tracking-wider btr-text-slate-500"
+          >
+            Up next
+          </p>
+          <div class="btr-mt-3 btr-flex btr-items-center btr-gap-2">
+            <span class="btr-avatar" aria-hidden="true">S</span>
+            <span class="btr-font-medium btr-text-slate-800">Sam</span>
+            <span class="btr-text-slate-400" aria-hidden="true">·</span>
+            <span class="btr-avatar btr-avatar--coral" aria-hidden="true"
+              >J</span
+            >
+            <span class="btr-font-medium btr-text-slate-800">Jordan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="btr-border-y btr-border-slate-200 btr-bg-white"
+    aria-labelledby="benefits-heading"
+  >
+    <div class="btr-mx-auto btr-max-w-6xl btr-px-4 btr-py-20">
+      <div class="btr-max-w-2xl">
+        <p class="btr-eyebrow">Less setup, more connection</p>
+        <h2
+          id="benefits-heading"
+          class="btr-mt-3 btr-text-3xl btr-font-semibold btr-tracking-tight btr-text-slate-950 sm:btr-text-4xl"
+        >
+          A party that starts before the energy fades.
+        </h2>
+      </div>
+
+      <div class="btr-mt-12 btr-grid btr-gap-6 md:btr-grid-cols-3">
+        @for (benefit of benefits; track benefit.eyebrow) {
+        <section
+          class="btr-benefit-card"
+          [attr.aria-labelledby]="'benefit-' + $index"
+        >
+          <p class="btr-feature-index">{{ benefit.eyebrow }}</p>
+          <h3
+            [id]="'benefit-' + $index"
+            class="btr-mt-6 btr-text-xl btr-font-semibold btr-text-slate-950"
+          >
+            {{ benefit.title }}
+          </h3>
+          <p class="btr-mt-3 btr-leading-7 btr-text-slate-600">
+            {{ benefit.description }}
+          </p>
+        </section>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section
+    id="how-it-works"
+    class="btr-scroll-mt-20 btr-bg-slate-950 btr-text-white"
+    aria-labelledby="steps-heading"
+  >
+    <div class="btr-mx-auto btr-max-w-6xl btr-px-4 btr-py-20">
+      <p class="btr-eyebrow btr-eyebrow--dark">How it works</p>
+      <h2
+        id="steps-heading"
+        class="btr-mt-3 btr-max-w-2xl btr-text-3xl btr-font-semibold btr-tracking-tight sm:btr-text-4xl"
+      >
+        From calendar invite to friendly rivalry.
+      </h2>
+
+      <ol class="btr-mt-12 btr-grid btr-gap-8 md:btr-grid-cols-3">
+        @for (step of steps; track step.eyebrow) {
+        <li class="btr-step">
+          <p
+            class="btr-text-sm btr-font-semibold btr-uppercase btr-tracking-wider btr-text-cyan-300"
+          >
+            {{ step.eyebrow }}
+          </p>
+          <h3 class="btr-mt-3 btr-text-xl btr-font-semibold">
+            {{ step.title }}
+          </h3>
+          <p class="btr-mt-3 btr-leading-7 btr-text-slate-300">
+            {{ step.description }}
+          </p>
+        </li>
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section
+    id="rally-partners"
+    class="btr-scroll-mt-20 btr-bg-amber-50"
+    aria-labelledby="game-heading"
+  >
+    <div
+      class="btr-mx-auto btr-grid btr-max-w-6xl btr-gap-10 btr-px-4 btr-py-20 lg:btr-grid-cols-2"
+    >
+      <div>
+        <p class="btr-eyebrow btr-text-amber-800">First on court</p>
+        <h2
+          id="game-heading"
+          class="btr-mt-3 btr-text-4xl btr-font-semibold btr-tracking-tight btr-text-slate-950"
+        >
+          Meet Rally Partners.
+        </h2>
+        <p class="btr-mt-5 btr-text-lg btr-leading-8 btr-text-slate-700">
+          Fast, playful arcade tennis built for a group. Two players take the
+          court while everyone else follows the score, reacts to improbable
+          saves, and sees exactly when they are up next.
+        </p>
+      </div>
+
+      <dl class="btr-game-facts">
+        <div>
+          <dt>Built for groups</dt>
+          <dd>Quick matches and fair rotation keep the room moving.</dd>
+        </div>
+        <div>
+          <dt>Easy to follow</dt>
+          <dd>Visible scores, queue order, and match state for every guest.</dd>
+        </div>
+        <div>
+          <dt>Social by design</dt>
+          <dd>Pairs with the meeting call your team already uses.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="btr-bg-white" aria-labelledby="inclusive-heading">
+    <div class="btr-mx-auto btr-max-w-6xl btr-px-4 btr-py-20">
+      <div class="btr-inclusive-panel">
+        <div>
+          <p class="btr-eyebrow">Everyone belongs in the room</p>
+          <h2
+            id="inclusive-heading"
+            class="btr-mt-3 btr-text-3xl btr-font-semibold btr-tracking-tight btr-text-slate-950"
+          >
+            Accessibility is part of the game plan.
+          </h2>
+        </div>
+        <p class="btr-max-w-2xl btr-text-lg btr-leading-8 btr-text-slate-700">
+          Core social flows are designed for keyboard and screen-reader use,
+          with essential game status available outside the canvas. Mobile guests
+          can always join, watch, react, and reconnect.
+        </p>
+      </div>
+    </div>
+  </section>
+</article>

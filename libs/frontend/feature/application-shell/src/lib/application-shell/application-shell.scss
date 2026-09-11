@@ -4,7 +4,7 @@
   grid-template-rows: auto 1fr auto;
 }
 
-.skip-link {
+.btr-skip-link {
   position: fixed;
   top: 0.5rem;
   left: 0.5rem;
@@ -16,7 +16,7 @@
   transform: translateY(-200%);
 }
 
-.skip-link:focus {
+.btr-skip-link:focus {
   transform: translateY(0);
 }
 :host {

@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'sym-application-shell',
+  selector: 'btr-application-shell',
   imports: [MatButtonModule, RouterLink, RouterOutlet],
   templateUrl: './application-shell.html',
   styleUrl: './application-shell.scss',

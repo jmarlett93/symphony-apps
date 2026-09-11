@@ -2,7 +2,7 @@
   "name": "symphony-apps",
   "version": "0.0.0",
   "private": true,
-  "description": "Nx monorepo for Symphony businesses",
+  "description": "Nx monorepo for BreakTimerr",
   "scripts": {
     "boundaries": "node tools/validate-project-tags.mjs",
     "build": "nx run-many -t build",

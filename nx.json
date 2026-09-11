@@ -50,15 +50,19 @@
     "@nx/angular:application": {
       "e2eTestRunner": "playwright",
       "linter": "eslint",
+      "prefix": "btr",
       "style": "scss",
       "unitTestRunner": "vitest-angular"
     },
     "@nx/angular:library": {
       "linter": "eslint",
+      "prefix": "btr",
       "unitTestRunner": "vitest-angular"
     },
     "@nx/angular:component": {
+      "prefix": "btr",
       "style": "scss"
     }
-  }
+  },
+  "analytics": false
 }

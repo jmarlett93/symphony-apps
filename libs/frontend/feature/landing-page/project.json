@@ -1,7 +1,7 @@
 {
-  "name": "application-shell",
+  "name": "landing-page",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/frontend/feature/application-shell/src",
+  "sourceRoot": "libs/frontend/feature/landing-page/src",
   "prefix": "btr",
   "projectType": "library",
   "tags": ["scope:frontend", "type:feature"],
@@ -10,12 +10,12 @@
       "executor": "@nx/angular:ng-packagr-lite",
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
-        "project": "libs/frontend/feature/application-shell/ng-package.json",
-        "tsConfig": "libs/frontend/feature/application-shell/tsconfig.lib.json"
+        "project": "libs/frontend/feature/landing-page/ng-package.json",
+        "tsConfig": "libs/frontend/feature/landing-page/tsconfig.lib.json"
       },
       "configurations": {
         "production": {
-          "tsConfig": "libs/frontend/feature/application-shell/tsconfig.lib.prod.json"
+          "tsConfig": "libs/frontend/feature/landing-page/tsconfig.lib.prod.json"
         },
         "development": {}
       },
@@ -30,7 +30,7 @@
     "typecheck": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "tsc --noEmit -p libs/frontend/feature/application-shell/tsconfig.lib.json"
+        "command": "tsc --noEmit -p libs/frontend/feature/landing-page/tsconfig.lib.json"
       }
     },
     "lint": {
