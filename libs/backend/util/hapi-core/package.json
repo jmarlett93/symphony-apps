@@ -1,0 +1,14 @@
+{
+  "name": "hapi-core",
+  "version": "0.0.1",
+  "private": true,
+  "type": "commonjs",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "dependencies": {
+    "@hapi/boom": "^10.0.1",
+    "@hapi/hapi": "^21.4.10",
+    "http-contracts": "0.0.1",
+    "zod": "^4.6.4"
+  }
+}
