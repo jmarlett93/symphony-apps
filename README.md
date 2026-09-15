@@ -13,9 +13,12 @@ Nx monorepo for BreakTimerr.
 corepack enable
 pnpm install --frozen-lockfile
 pnpm serve
+pnpm serve:api
 ```
 
-The Angular 21 application is available at `http://localhost:4200`.
+The Angular 21 application is available at `http://localhost:2211`.
+The Hapi API listens on `http://localhost:2212` (`GET /health/live`, `GET /v1`).
+Backend apps and libraries package with esbuild; `tsc --noEmit` remains typecheck-only.
 
 ## Quality checks
 
