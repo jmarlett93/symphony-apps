@@ -12,9 +12,9 @@ describe('zodValidator', () => {
 
   it('returns parsed values', async () => {
     const validate = zodValidator(schema);
-    await expect(
-      validate({ email: 'host@example.com' }, {}),
-    ).resolves.toEqual({ email: 'host@example.com' });
+    await expect(validate({ email: 'host@example.com' }, {})).resolves.toEqual({
+      email: 'host@example.com',
+    });
   });
 
   it('throws Boom with problem details on invalid input', async () => {

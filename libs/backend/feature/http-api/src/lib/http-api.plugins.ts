@@ -8,7 +8,7 @@ import {
   type HealthReadyResponse,
 } from 'http-contracts';
 
-const healthPlugin: Hapi.Plugin<null> = {
+export const healthPlugin: Hapi.Plugin<null> = {
   name: 'health',
   register: async (server) => {
     server.route({
@@ -29,7 +29,7 @@ const healthPlugin: Hapi.Plugin<null> = {
   },
 };
 
-const v1Plugin: Hapi.Plugin<null> = {
+export const v1Plugin: Hapi.Plugin<null> = {
   name: 'v1',
   register: async (server) => {
     server.route({
@@ -43,8 +43,4 @@ const v1Plugin: Hapi.Plugin<null> = {
         }),
     });
   },
-};
-
-export const registerHttpApi = async (server: Hapi.Server): Promise<void> => {
-  await server.register([healthPlugin, v1Plugin]);
 };

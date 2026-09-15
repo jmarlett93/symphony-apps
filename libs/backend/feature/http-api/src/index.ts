@@ -1,1 +1,1 @@
-export * from './lib/register-http-api';
+export * from './lib/http-api.plugins';

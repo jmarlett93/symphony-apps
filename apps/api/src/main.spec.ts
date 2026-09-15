@@ -1,14 +1,14 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import type Hapi from '@hapi/hapi';
 import { createServer } from 'hapi-core';
-import { registerHttpApi } from 'http-api';
+import { healthPlugin, v1Plugin } from 'http-api';
 
 describe('api routes', () => {
   let server: Hapi.Server;
 
   beforeAll(async () => {
     server = await createServer({ host: '127.0.0.1', port: 0 });
-    await registerHttpApi(server);
+    await server.register([healthPlugin, v1Plugin]);
     await server.initialize();
   });
 
@@ -17,7 +17,10 @@ describe('api routes', () => {
   });
 
   it('returns live health', async () => {
-    const response = await server.inject({ method: 'GET', url: '/health/live' });
+    const response = await server.inject({
+      method: 'GET',
+      url: '/health/live',
+    });
     expect(response.statusCode).toBe(200);
     expect(response.result).toEqual({ status: 'ok' });
   });

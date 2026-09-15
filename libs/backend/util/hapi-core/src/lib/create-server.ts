@@ -34,7 +34,10 @@ export const createServer = async (
     const data = response.data;
     const parsedData = problemDetailsSchema.safeParse(data);
     const problem = parsedData.success
-      ? { ...parsedData.data, reference: parsedData.data.reference ?? request.info.id }
+      ? {
+          ...parsedData.data,
+          reference: parsedData.data.reference ?? request.info.id,
+        }
       : problemFromBoom(
           status,
           response.message || 'Request failed',

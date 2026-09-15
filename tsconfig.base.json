@@ -19,9 +19,7 @@
       ],
       "hapi-core": ["./libs/backend/util/hapi-core/src/index.ts"],
       "http-api": ["./libs/backend/feature/http-api/src/index.ts"],
-      "http-contracts": [
-        "./libs/shared/models/http-contracts/src/index.ts"
-      ],
+      "http-contracts": ["./libs/shared/models/http-contracts/src/index.ts"],
       "landing-page": ["./libs/frontend/feature/landing-page/src/index.ts"]
     }
   },
