@@ -10,20 +10,21 @@
       "outputs": ["{options.outputPath}"],
       "dependsOn": ["^build"],
       "options": {
-        "main": "libs/backend/util/hapi-core/src/index.ts",
+        "platform": "node",
         "outputPath": "dist/libs/backend/util/hapi-core",
         "outputFileName": "index.js",
-        "tsConfig": "libs/backend/util/hapi-core/tsconfig.lib.json",
-        "platform": "node",
         "format": ["cjs"],
         "bundle": true,
-        "thirdParty": false,
-        "external": ["@hapi/boom", "@hapi/hapi", "zod"],
+        "main": "libs/backend/util/hapi-core/src/index.ts",
+        "tsConfig": "libs/backend/util/hapi-core/tsconfig.lib.json",
+        "packageJson": "libs/backend/util/hapi-core/package.json",
+        "generatePackageJson": true,
         "esbuildOptions": {
           "sourcemap": true,
           "outExtension": {
             ".js": ".js"
-          }
+          },
+          "external": ["@hapi/boom", "@hapi/hapi", "zod"]
         }
       }
     },

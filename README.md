@@ -18,7 +18,10 @@ pnpm serve:api
 
 The Angular 21 application is available at `http://localhost:2211`.
 The Hapi API listens on `http://localhost:2212` (`GET /health/live`, `GET /v1`).
-Backend apps and libraries package with esbuild; `tsc --noEmit` remains typecheck-only.
+Backend Node apps and libraries package with `@nx/esbuild:esbuild` (Cursus-style
+bundled CJS + generated package.json). `tsc --noEmit` remains typecheck-only.
+CORS defaults to `http://localhost:2211`; override with comma-separated `ALLOWED_ORIGINS`.
+`pnpm boundaries` also requires Node projects to keep the esbuild build executor.
 
 ## Quality checks
 

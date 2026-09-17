@@ -67,6 +67,16 @@
     "@nx/angular:component": {
       "prefix": "btr",
       "style": "scss"
+    },
+    "@nx/js:library": {
+      "bundler": "esbuild",
+      "linter": "eslint",
+      "unitTestRunner": "vitest"
+    },
+    "@nx/node:application": {
+      "bundler": "esbuild",
+      "linter": "eslint",
+      "unitTestRunner": "none"
     }
   },
   "analytics": false

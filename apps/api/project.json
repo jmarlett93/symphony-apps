@@ -8,21 +8,41 @@
     "build": {
       "executor": "@nx/esbuild:esbuild",
       "outputs": ["{options.outputPath}"],
-      "dependsOn": ["^build"],
+      "defaultConfiguration": "production",
       "options": {
-        "main": "apps/api/src/main.ts",
+        "platform": "node",
         "outputPath": "dist/apps/api",
         "outputFileName": "main.js",
-        "tsConfig": "apps/api/tsconfig.app.json",
-        "platform": "node",
         "format": ["cjs"],
         "bundle": true,
-        "thirdParty": false,
-        "external": ["@hapi/hapi", "@hapi/boom", "zod"],
+        "main": "apps/api/src/main.ts",
+        "tsConfig": "apps/api/tsconfig.app.json",
+        "generatePackageJson": true,
+        "externalDependencies": "none",
+        "thirdParty": true,
+        "external": [],
         "esbuildOptions": {
           "sourcemap": true,
           "outExtension": {
             ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {
+          "esbuildOptions": {
+            "sourcemap": true,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        },
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
           }
         }
       }
@@ -32,13 +52,16 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "api:build",
+        "buildTarget": "api:build:development",
         "watch": true,
         "runBuildTargetDependencies": false
       },
       "configurations": {
         "development": {
-          "buildTarget": "api:build"
+          "buildTarget": "api:build:development"
+        },
+        "production": {
+          "buildTarget": "api:build:production"
         }
       }
     },
