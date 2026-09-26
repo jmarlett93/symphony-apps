@@ -1,0 +1,32 @@
+---
+description: Angular isolated component and store tests (Vitest)
+globs: "libs/**/feature/**/*.spec.ts,libs/**/data-access/**/*.spec.ts,libs/**/ui/**/*.spec.ts,apps/**/*.spec.ts"
+alwaysApply: false
+---
+
+# Angular isolated component / store tests
+
+## Stack
+
+- Use Vitest with `jsdom` and the Angular Vite plugin.
+- Use `@testing-library/angular`: `render()`, `screen`, and role/name queries.
+- Use `@testing-library/user-event`: `userEvent.setup()` followed by `click()`, `type()`, and similar actions.
+- Use `vi.mock()` to stub injected services, child components, or heavy modules so the spec exercises only the system under test.
+- For routing, either mock `@angular/router` or use `provideRouter([...])` with a `Router` spy on `navigateByUrl()` / `navigate()`.
+
+## Isolate the component under test
+
+1. Put `vi.mock('path/to/dependency', () => ({ ... }))` at top level; it is hoisted.
+2. Import the system under test after mocks if it pulls mocked modules.
+3. Use `render(Component, { providers: [...] })` with `useValue` or `useClass` fakes instead of real HTTP or stores when possible.
+4. Prefer `componentInputs: { ... }` over reaching into `fixture.componentRef`.
+
+## Data access
+
+- Test observable behavior: signals, public methods, and error paths.
+- Mock `HttpClient` with `HttpClientTestingModule` and `HttpTestingController`, or replace the service with `vi.fn()` providers.
+
+## Anti-patterns
+
+- Do not use `fixture.debugElement.query(By.css(...))` for anything a user can see; use `screen` and roles.
+- Do not render the whole app to test one button.

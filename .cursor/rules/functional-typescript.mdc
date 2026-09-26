@@ -1,0 +1,16 @@
+---
+description: Functional TypeScript and JavaScript conventions
+globs: "**/*.{ts,tsx,js,jsx}"
+alwaysApply: false
+---
+
+# Functional TypeScript
+
+- Prefer pure functions for transformations, validation, formatting, and domain logic.
+- Define small reusable functions as exported `const` arrow functions when that matches the surrounding code.
+- Isolate I/O, mutation, timers, logging, and other side effects at application boundaries.
+- Prefer `map`, `filter`, `find`, `some`, `every`, and `flatMap` for collection transformations when they improve clarity.
+- Use `reduce` when an accumulator is the natural model; do not force it where a named helper or loop is clearer.
+- Do not mutate input arguments or shared module state.
+- Keep functions focused on one transformation or decision and make dependencies explicit.
+- Preserve validation, error handling, accessibility, and performance when simplifying code.

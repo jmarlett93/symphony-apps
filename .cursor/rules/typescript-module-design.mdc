@@ -1,0 +1,14 @@
+---
+description: TypeScript module boundaries and public API conventions
+globs: "**/*.{ts,tsx}"
+alwaysApply: false
+---
+
+# TypeScript module design
+
+- Keep domain logic, presentation, data access, and integration concerns separate.
+- Export the public API from the module's existing entry point, usually `index.ts`; do not expose internal helpers accidentally.
+- Prefer interfaces and type aliases that describe the data crossing a boundary.
+- Depend on abstractions only when there is a real second implementation or a testing boundary; do not add speculative layers.
+- Keep imports directed toward lower-level utilities and domain contracts; avoid circular dependencies.
+- Tests should exercise public behavior and error paths rather than private implementation details.

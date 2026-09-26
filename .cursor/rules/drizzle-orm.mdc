@@ -1,0 +1,32 @@
+---
+description: Drizzle ORM conventions (schema, migrations, and database configuration)
+globs: "**/*.{schema,migration}.ts,**/drizzle.config.ts"
+alwaysApply: false
+---
+
+# Drizzle ORM
+
+## Schema
+
+- Keep schema definitions separate from handlers, services, and transport code.
+- Use explicit TypeScript types for data crossing application boundaries.
+- Keep table, relation, and index definitions close to the schema they describe.
+- Prefer database constraints for invariants that belong in the database.
+- Validate external input before passing it to database operations.
+- Export reusable schema types from the module's public entry point.
+
+## Database operations
+
+- Use Drizzle ORM for database operations.
+- Keep database calls in data-access functions or services rather than UI or route registration code.
+- Keep transactions explicit around operations that must succeed or fail together.
+- Return only the fields a caller needs.
+- Handle expected database errors and map them to appropriate HTTP or domain errors at the boundary.
+
+## Migrations and configuration
+
+- Treat migrations as ordered, committed application history.
+- Review generated migrations before committing them.
+- Keep migration configuration separate from runtime application configuration.
+- Never commit credentials; use environment variables for database connections.
+- Do not edit an already-applied migration to change production history. Create a new migration.

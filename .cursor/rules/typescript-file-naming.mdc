@@ -1,0 +1,24 @@
+---
+description: TypeScript file naming and responsibility conventions
+globs: "**/*.{ts,tsx}"
+alwaysApply: false
+---
+
+# TypeScript file naming
+
+Name files after their primary responsibility. Use a descriptive subject plus a role suffix:
+
+- `*.model.ts` — domain data shapes and related types
+- `*.types.ts` — shared or infrastructure type aliases
+- `*.util.ts` — small pure utilities
+- `*.validator.ts` — input or domain validation
+- `*.service.ts` — side-effecting application or integration service
+- `*.store.ts` — stateful store
+- `*.handler.ts` — request, event, or command handler
+- `*.schema.ts` — runtime schema definitions
+- `*.config.ts` — configuration and providers
+- `*.routes.ts` — route registration
+- `*.component.ts` — UI component class
+- `*.spec.ts` or `*.test.ts` — tests
+
+Keep one primary responsibility per file. Do not create a suffix-only file for a single trivial declaration; use the smallest clear structure that matches the repository.

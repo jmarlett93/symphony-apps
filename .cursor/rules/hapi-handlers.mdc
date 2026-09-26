@@ -1,0 +1,53 @@
+---
+description: Hapi handlers, routes, and plugins (Joi validation and handler pattern)
+globs: "**/{handler*,routes*,plugin*}.ts"
+alwaysApply: false
+---
+
+# Hapi routes and handlers
+
+## API libraries
+
+**Purpose**: Backend business logic, handlers, and database operations.
+
+**Rules**:
+
+- Use functional programming style.
+- Separate concerns: handlers, services, and database operations.
+- Follow error handling patterns with proper HTTP status codes.
+- Use dependency injection where applicable.
+- Validate inputs with Joi schemas.
+- Use TypeScript interfaces for all data structures.
+
+## Handler pattern
+
+```typescript
+export const handlerName = async (
+  request: Request,
+  handler: ResponseToolkit
+) => {
+  try {
+    const { database } = request.server.app;
+    const result = await serviceFunction(database, request.payload);
+    return handler.response(result).code(200);
+  } catch (error) {
+    return handler.response({ message: 'Error message' }).code(500);
+  }
+};
+```
+
+## Joi API request validation
+
+- Add Joi validation to the request payload.
+- Add Joi validation to the request params.
+- Add Joi validation to the request query.
+- Keep route registration, validation, and handler behavior explicit.
+
+## API applications
+
+- Use the Hapi.js server framework.
+- Register plugins for different domains.
+- Configure CORS appropriately.
+- Set up database connections in server setup.
+- Use environment-based configuration.
+- Follow the plugin registration pattern.

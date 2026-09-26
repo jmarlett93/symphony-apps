@@ -1,0 +1,22 @@
+---
+description: Angular template conventions (separate HTML, control flow, accessibility)
+globs: "apps/**/*.component.html,libs/**/*.component.html"
+alwaysApply: false
+---
+
+# Angular templates
+
+When editing files matching this rule.
+
+## Scope
+
+- Applies to: `**/*.component.html`
+
+## Conventions
+
+- Always use separate `.html` files in Angular components; do not use inline templates.
+- Use semantic HTML with proper accessibility attributes.
+- Apply Tailwind classes consistently with the project's configured prefix, if one exists.
+- When styling text elements inside Material layout components, add a `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>`, `<span>`, or `<p>` element as appropriate and then style the element with Tailwind classes to avoid getting overridden by Material styles.
+- Use Angular control flow (`@if`, `@for`) instead of structural directives.
+- If a signal is used in the template multiple times, use the `@let` syntax to declare the variable at the top of the template and then use it multiple times.
