@@ -10,20 +10,21 @@
       "outputs": ["{options.outputPath}"],
       "dependsOn": ["^build"],
       "options": {
-        "main": "libs/backend/feature/http-api/src/index.ts",
+        "platform": "node",
         "outputPath": "dist/libs/backend/feature/http-api",
         "outputFileName": "index.js",
-        "tsConfig": "libs/backend/feature/http-api/tsconfig.lib.json",
-        "platform": "node",
         "format": ["cjs"],
         "bundle": true,
-        "thirdParty": false,
-        "external": ["@hapi/hapi"],
+        "main": "libs/backend/feature/http-api/src/index.ts",
+        "tsConfig": "libs/backend/feature/http-api/tsconfig.lib.json",
+        "packageJson": "libs/backend/feature/http-api/package.json",
+        "generatePackageJson": true,
         "esbuildOptions": {
           "sourcemap": true,
           "outExtension": {
             ".js": ".js"
-          }
+          },
+          "external": ["@hapi/hapi"]
         }
       }
     },

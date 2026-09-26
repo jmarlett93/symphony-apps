@@ -42,4 +42,18 @@ describe('api routes', () => {
       version: '0.0.0',
     });
   });
+
+  it('reflects CORS headers for browser Origin', async () => {
+    const response = await server.inject({
+      method: 'GET',
+      url: '/health/live',
+      headers: { origin: 'http://localhost:2211' },
+    });
+
+    expect(response.statusCode).toBe(200);
+    expect(response.headers['access-control-allow-origin']).toBe(
+      'http://localhost:2211',
+    );
+    expect(response.headers['access-control-allow-credentials']).toBe('true');
+  });
 });

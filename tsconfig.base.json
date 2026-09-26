@@ -17,6 +17,7 @@
       "application-shell": [
         "./libs/frontend/feature/application-shell/src/index.ts"
       ],
+      "cors-helpers": ["./libs/backend/util/cors-helpers/src/index.ts"],
       "hapi-core": ["./libs/backend/util/hapi-core/src/index.ts"],
       "http-api": ["./libs/backend/feature/http-api/src/index.ts"],
       "http-contracts": ["./libs/shared/models/http-contracts/src/index.ts"],

@@ -16,6 +16,22 @@ const allowedTypes = new Set([
 const selectTags = (tags, prefix) =>
   tags.filter((tag) => tag.startsWith(`${prefix}:`));
 
+const isNodePackagedProject = (root, tags) => {
+  if (tags.includes('scope:frontend')) {
+    return false;
+  }
+
+  if (root.startsWith('apps/web')) {
+    return false;
+  }
+
+  return (
+    tags.includes('scope:backend') ||
+    tags.includes('scope:shared') ||
+    (tags.includes('type:app') && root.startsWith('apps/'))
+  );
+};
+
 const validateProject = ([name, node]) => {
   const tags = node.data.tags ?? [];
   const scopes = selectTags(tags, 'scope');
@@ -34,6 +50,17 @@ const validateProject = ([name, node]) => {
 
   if (types[0] === 'type:app' && !node.data.root.startsWith('apps/')) {
     errors.push('type:app projects must live under apps/');
+  }
+
+  const buildExecutor = node.data.targets?.build?.executor;
+  if (
+    buildExecutor &&
+    isNodePackagedProject(node.data.root, tags) &&
+    buildExecutor !== '@nx/esbuild:esbuild'
+  ) {
+    errors.push(
+      `Node projects must build with @nx/esbuild:esbuild, received ${buildExecutor}`,
+    );
   }
 
   return errors.map((error) => `${name}: ${error}`);

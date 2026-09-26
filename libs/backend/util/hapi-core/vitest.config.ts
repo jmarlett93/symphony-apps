@@ -7,6 +7,7 @@ const root = dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   resolve: {
     alias: {
+      'cors-helpers': resolve(root, '../cors-helpers/src/index.ts'),
       'http-contracts': resolve(
         root,
         '../../../shared/models/http-contracts/src/index.ts',

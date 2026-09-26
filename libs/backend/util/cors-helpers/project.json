@@ -1,43 +1,43 @@
 {
-  "name": "http-contracts",
+  "name": "cors-helpers",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/shared/models/http-contracts/src",
+  "sourceRoot": "libs/backend/util/cors-helpers/src",
   "projectType": "library",
-  "tags": ["scope:shared", "type:model"],
+  "tags": ["scope:backend", "type:util"],
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
       "outputs": ["{options.outputPath}"],
       "options": {
         "platform": "node",
-        "outputPath": "dist/libs/shared/models/http-contracts",
+        "outputPath": "dist/libs/backend/util/cors-helpers",
         "outputFileName": "index.js",
         "format": ["cjs"],
         "bundle": true,
-        "main": "libs/shared/models/http-contracts/src/index.ts",
-        "tsConfig": "libs/shared/models/http-contracts/tsconfig.lib.json",
-        "packageJson": "libs/shared/models/http-contracts/package.json",
+        "main": "libs/backend/util/cors-helpers/src/index.ts",
+        "tsConfig": "libs/backend/util/cors-helpers/tsconfig.lib.json",
+        "packageJson": "libs/backend/util/cors-helpers/package.json",
         "generatePackageJson": true,
         "esbuildOptions": {
           "sourcemap": true,
           "outExtension": {
             ".js": ".js"
           },
-          "external": ["zod"]
+          "external": ["@hapi/hapi"]
         }
       }
     },
     "test": {
       "executor": "nx:run-commands",
       "options": {
-        "cwd": "libs/shared/models/http-contracts",
+        "cwd": "libs/backend/util/cors-helpers",
         "command": "vitest run"
       }
     },
     "typecheck": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "tsc --noEmit -p libs/shared/models/http-contracts/tsconfig.lib.json"
+        "command": "tsc --noEmit -p libs/backend/util/cors-helpers/tsconfig.lib.json"
       }
     },
     "lint": {
