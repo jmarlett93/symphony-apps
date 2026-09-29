@@ -180,9 +180,22 @@ Contraption Cabinet can precede One-Button Wonder when rapid catalog validation 
 
 ### Promise
 
-A fast 2v2 arcade-tennis event where partners call shots, cover space, rotate through a bracket, and celebrate improbable saves.
+Rally Partners starts as a fast 1v1 arcade-tennis tournament where players rotate through a shared event, then grows into team play and more exciting competitive formats.
 
-### Team and match format
+### Delivery phases
+
+- **Phase 1 — 1v1 tournaments:** validate the core court, tournament, queue, spectator, reaction, reconnect, and results loops with individual players.
+- **Phase 2 — 2v2 tournaments:** introduce partner teams, shared tactics, and collaboration mechanics after the 1v1 loop is proven.
+- **Later phases — expanded formats:** explore multiple courts, playoffs, consolation play, predictions, replay highlights, and other social competition without making them prerequisites for the initial launch.
+
+### Phase 1: 1v1 tournament format
+
+- One active court per event in the initial release.
+- Two players compete while the rest of the party queues and spectates.
+- Matches use a short target score and rotate players through a visible queue.
+- Tournament structure, match length, and advancement rules remain configurable product decisions for playtesting.
+
+### Phase 2: 2v2 team format
 
 - Fixed teams of two.
 - Four-minute sets or first to a small target score.
@@ -226,7 +239,13 @@ A fast 2v2 arcade-tennis event where partners call shots, cover space, rotate th
 - Audience cheers.
 - Best Save, Cleanest Setup, and Most Supportive Duo ribbons.
 
-### MVP
+### Phase 1 MVP
+
+- One polished 1v1 court and ruleset.
+- Keyboard controls with accessible alternatives.
+- Visible queue, spectator view, curated reactions, reconnect, and individual match result.
+
+### Phase 2 MVP
 
 - One polished court and ruleset.
 - Keyboard controls with accessible alternatives.

@@ -1,0 +1,42 @@
+---
+description: TypeScript function naming conventions
+globs: "**/*.{ts,tsx}"
+alwaysApply: false
+---
+
+# TypeScript function naming
+
+Name functions with a clear verb-first phrase that describes the observable
+operation:
+
+```ts
+mapResponseFieldsToUiView()
+validateOrderInput()
+loadUserPreferences()
+buildInvoiceSummary()
+isEligibleForRetry()
+```
+
+Prefer this shape:
+
+```text
+verb + subject + transformation, destination, or condition
+```
+
+Use the most specific useful verb:
+
+- `get` / `find` / `load` for reads; distinguish absence when it matters.
+- `create` / `update` / `delete` for lifecycle changes.
+- `map` / `parse` / `serialize` / `normalize` for data transformations.
+- `validate` / `assert` for checks; reserve `assert` for functions that throw.
+- `build` / `create` for constructing values; use `build` for derived output.
+- `can` / `is` / `has` / `should` for boolean results.
+- `handle` only for an event or request boundary where the event is named.
+
+Avoid vague names such as `processData`, `doThing`, `handleStuff`, or
+`transform` when the subject or result can be named. Do not add words merely to
+force a pattern: short names such as `parseDate` and `isValid` are preferable
+to awkward names.
+
+Name functions according to their public contract, not their implementation
+steps. Keep terminology aligned with the repository glossary and domain model.
