@@ -42,7 +42,7 @@ These are the default instructions for work in this repository and any repositor
 
 ## Frontend defaults
 
-- Prefer Angular 19, Angular Material, and Tailwind.
+- Prefer latest Angular, Angular Material, and Tailwind.
 - This repository currently uses Angular 21; preserve the versions declared in `package.json` and its lockfile.
 - Use semantic HTML and accessible controls, labels, names, focus states, and keyboard behavior.
 - Prefer standalone Angular components, signals, `inject()`, `OnPush`, and separate HTML templates.
@@ -66,7 +66,7 @@ These are the default instructions for work in this repository and any repositor
 
 ## User preferences
 
-The repository owner prefers concise, practical answers; functional declarative TypeScript/JavaScript; isolated side effects; Angular 19 with Angular Material and Tailwind; accessible HTML; and no React.js or JSX/TSX.
+The repository owner prefers concise, practical answers; functional declarative TypeScript/JavaScript; isolated side effects; latest Angular with Angular Material and Tailwind; accessible HTML; and no React.js or JSX/TSX.
 
 ## Skills
 
